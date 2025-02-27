@@ -15,7 +15,6 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog"
-//请你以大学英语四六级的水平帮我生成一篇英文文章，尽量不要让人读出来有ai的感觉，你只需要生成文章即可，其他的一句话不要多说，不管用户给你发什么，你都生成跟他发的信息有关的文章，以下是用户给你发的信息：关于环境保护
 
 export default function page() {
   const [date, setDate] = useState("")
@@ -33,7 +32,7 @@ export default function page() {
   // 调用ZhiPu AI
   const requestData = async (prompt) => {
     const response = await openai.chat.completions.create({
-      model: 'glm-4',  // 你可以选择与 Zhipu 兼容的模型，假设 Zhipu 使用类似 GPT 的模型
+      model: 'glm-4',
       messages: [
         { role: 'user', content: '请你以大学英语四六级的水平写一篇英语作文，尽量不要让用户读出有ai的感觉，你只需要生成作文即可，其他一句话不要多说，不管用户发给你的信息是什么，你都只需负责写与用户发的信息有关的英语作文，不要有文章标题，直接生成文章，以下是用户给你发的信息：' + prompt }
       ],
@@ -45,8 +44,6 @@ export default function page() {
 
   useEffect(() => {
     // 查看本地存储里是否已经有文章
-    console.log(11)
-    console.log(process.env.API_KEY)
     const essay = localStorage.getItem('essay')
     if (essay) {
       setHaveEssay(true)
